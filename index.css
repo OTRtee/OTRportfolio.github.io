@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #393A50;
+    --background-color: #e9ecef;
+    --sidebar-background-color: var(--primary-color);
+    --body-background-color: #ffffff;
+    --navbar-text-color: white;
+    --navbar-hover-color: #5a6eda;
+    --footer-background-color: #333;
+    --footer-text-color: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    grid-area: body;
+}
+
+.layout {
+    display: grid;
+    grid-template-areas: "sidebar body";
+    grid-template-columns: 250px 1fr; /* 250px for the sidebar and remaining space for the body */
+    min-height: 100vh;
+}
+
+.body {
+    background-color: var(--body-background-color);
+    padding: 20px;
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.logo img {
+    width: 200px;
+}
+
+.nav-list {
+    list-style: none;
+    width: 100%;
+}
+
+.nav-list i {
+    margin-right: 8px;
+}
+
+#toggleSidebar {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+}
+
+.sidebar.expanded{
+    width: 250px;
+    transition: width 0.3s;
+}
+
+/* Add this CSS to control the sidebar width */
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--sidebar-background-color);
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Set the initial width of the sidebar */
+    transition: width 0.3s; /* Add transition for smooth animation */
+}
+
+/* Adjust the text color to match the background color when collapsed */
+.sidebar.collapsed .nav-link {
+    opacity: 0; /* Hide the text when collapsed */
+    visibility: hidden; /* Hide the text when collapsed */
+}
+
+/* Add this CSS to show icons only when collapsed */
+.sidebar.collapsed .nav-link i {
+    margin-right: 0;
+    font-size: 24px;
+    opacity: 1; /* Show the icons when collapsed */
+    visibility: visible; /* Show the icons when collapsed */
+    transition: opacity 0.3s; /* Add transition for smooth animation */
+}
+.nav-link {
+    text-decoration: none;
+    color: var(--navbar-text-color);
+    display: block;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: var(--navbar-hover-color);
+}
